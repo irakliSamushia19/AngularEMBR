@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="main">
+      <a class="prj-name">
+          EMBER Shop
+      </a>
+
+      <div class="categories">
+          <a href="{{ url_for('get_content', category = 'New') }}">New</a>
+          <a href="{{ url_for('get_content', category = 'Women') }}">Women</a>
+          <a href="{{ url_for('get_content', category = 'Men') }}" >Men</a>
+          <a style="padding: 35px 120px 35px 120px;">Log In</a>
+
+      </div>
+    </div>
+
+    <div style="height: 90px"></div>
+
+    <div class="category-indicator" id="content">
+      <h1 style="padding-top: 60px; font-size: 70px; font-weight: bold">Shop {{ category }}</h1>
+    </div>
+
+    <div class="for-clothes-list">
+        <div class="clothes-list">
+            {% for cloth in clothes %}
+                <div class="clothes-item">
+                    <div class="item-image">
+                        <img src="{{ cloth.image }}" alt="{{ cloth.name }}">
+                        <a href="/get_content/{{ category }}/{{ cloth.id }}" class="view-product">პროდუქტის ნახვა</a>
+                    </div>
+                    <h3>{{ cloth.name }}</h3>
+                    <p>Price: ${{ cloth.price }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
